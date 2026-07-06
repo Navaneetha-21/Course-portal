@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}COURSES{% endblock title %}   
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/course_list.css' %}">
+{% endblock extra_css %}
+
+
+{% block content %}
+<div>
+    <h1 class="page-title">Courses Offered</h1>
+    <div class="card-grid">
+        {% for code,course in courses.items %}
+        <div class="course-card">
+            <h2>{{ course.meta.title }}</h2>
+            <p><strong>Difficulty:{{ course.meta.level }}</strong></p>
+            <p><strong>Duration:{{ course.meta.duration }}</strong></p>
+            <p><strong>Fees:{{ course.meta.fee }}</strong></p>
+
+            <a href="" class="btn">View Details</a>
+        
+        </div>
+        {% empty %}
+            <p style="color: red;">No Course Found!</p>
+
+        {% endfor %}
+    </div>
+
+
+</div>
+{% endblock content %}
